@@ -37,12 +37,13 @@ private struct CorrectorTests {
     }
 
     @Test
-    func removeswithDenylist() {
+    func removesWithDenylist() {
         let clippings = [
             Clipping(source: "Source 1", meta: "Meta 1", clipping: "One"),
             Clipping(source: "Source 2", meta: "Meta 2", clipping: "Two"),
             Clipping(source: "Source 3", meta: "Meta 3", clipping: "Three"),
             Clipping(source: "Source 3", meta: "Meta 3", clipping: "Four"),
+            Clipping(source: "Source 3", meta: "Meta 3", clipping: "One Two Three"),
         ]
         let denylist = ["Two", "Four"]
         let expected = [

@@ -9,6 +9,7 @@ enum Corrector {
         let withoutDuplicates = removeDuplicates(from: clippings)
         let aboveThreshold = removeClippingsBelowWordCountThreshold(from: withoutDuplicates, threshold: threshold)
         let withoutDenylist = removeWithDenylist(from: aboveThreshold, denylist: denylist)
+        // TODO: Add merging similar clippings
         return withoutDenylist
     }
 
@@ -33,10 +34,12 @@ enum Corrector {
         }
     }
 
+    /// Removes clippings that contain any of the denylisted words
     static func removeWithDenylist(from clippings: [Clipping], denylist: [String]) -> [Clipping] {
-        // TODO: Do not require exact match, use contains instead
         clippings.filter { clipping in
-            !denylist.contains(clipping.clipping)
+            !denylist.contains { deny in
+                clipping.clipping.contains(deny)
+            }
         }
     }
 }
