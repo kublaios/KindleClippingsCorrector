@@ -34,6 +34,7 @@ enum Corrector {
     }
 
     static func removeWithDenylist(from clippings: [Clipping], denylist: [String]) -> [Clipping] {
+        // TODO: Do not require exact match, use contains instead
         clippings.filter { clipping in
             !denylist.contains(clipping.clipping)
         }

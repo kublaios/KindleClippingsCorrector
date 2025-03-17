@@ -3,6 +3,7 @@
 
 import Foundation
 
+// TODO: Convert to a command line tool
 let currentDirectory = FileManager.default.currentDirectoryPath
 print("Working directory: \(currentDirectory)")
 let fileName = "clippings.txt"
