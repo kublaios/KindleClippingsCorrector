@@ -1,6 +1,6 @@
 import Foundation
 
-struct Source: Equatable {
+struct Source: Equatable, Hashable {
     let name: String
 
     init(_ name: String) {

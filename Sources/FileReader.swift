@@ -16,4 +16,3 @@ enum FileReader {
             .map(String.init)
     }
 }
-
