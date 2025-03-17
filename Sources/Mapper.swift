@@ -6,7 +6,7 @@ enum Mapper {
         var currentClipping: Clipping?
         for line in lines {
             guard currentClipping != nil else {
-                currentClipping = Clipping(source: line, meta: "", clipping: "")
+                currentClipping = Clipping(source: .init(line), meta: "", clipping: "")
                 continue
             }
             guard !line.isEmpty else {

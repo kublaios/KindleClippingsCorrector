@@ -4,7 +4,7 @@ enum FileWriter {
     static func write(clippings: [Clipping], to fileURL: URL) throws {
         let contents = clippings.map {
             """
-            \($0.source)
+            \($0.source.name)
             \($0.meta)
 
             \($0.clipping)

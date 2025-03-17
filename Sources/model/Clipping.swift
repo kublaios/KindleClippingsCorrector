@@ -1,7 +1,7 @@
 import Foundation
 
 struct Clipping: Equatable {
-    let source: String
+    let source: Source
     var meta: String
     var clipping: String
 }

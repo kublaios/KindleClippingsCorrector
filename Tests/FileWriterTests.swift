@@ -7,9 +7,9 @@ private struct FileWriterTests {
     @Test
     func writesClippingsToFile() throws {
         let clippings = [
-            Clipping(source: "Source 1", meta: "Meta 1", clipping: "Clipping 1"),
-            Clipping(source: "Source 2", meta: "Meta 2", clipping: "Clipping 2"),
-            Clipping(source: "Source 3", meta: "Meta 3", clipping: "Clipping 3"),
+            Clipping(source: .init("Source 1"), meta: "Meta 1", clipping: "Clipping 1"),
+            Clipping(source: .init("Source 2"), meta: "Meta 2", clipping: "Clipping 2"),
+            Clipping(source: .init("Source 3"), meta: "Meta 3", clipping: "Clipping 3"),
         ]
         guard let cachesDir = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first else {
             #expect(Bool(false))
@@ -46,7 +46,7 @@ enum FileWriter {
     static func write(clippings: [Clipping], to fileURL: URL) throws {
         let contents = clippings.map {
             """
-            \($0.source)
+            \($0.source.name)
             \($0.meta)
 
             \($0.clipping)
