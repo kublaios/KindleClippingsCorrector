@@ -25,6 +25,22 @@ private struct OrganizerTests {
     }
 
     @Test
+    func reversesClippings() {
+        let clippings = [
+            Clipping(source: .init("Source 1"), meta: "Meta 1", clipping: "One Two Three"),
+            Clipping(source: .init("Source 2"), meta: "Meta 2", clipping: "One"),
+            Clipping(source: .init("Source 3"), meta: "Meta 3", clipping: "Three"),
+        ]
+        let expected = [
+            Clipping(source: .init("Source 1"), meta: "Meta 1", clipping: "eerhT owT enO"),
+            Clipping(source: .init("Source 2"), meta: "Meta 2", clipping: "enO"),
+            Clipping(source: .init("Source 3"), meta: "Meta 3", clipping: "eerhT"),
+        ]
+        let result = Organizer.reverseClippings(in: clippings)
+        #expect(result == expected)
+    }
+
+    @Test
     func groupsBySource() {
         let source1 = Source("Source 1")
         let source2 = Source("Source 2")
